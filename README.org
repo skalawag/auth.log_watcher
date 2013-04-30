@@ -1,0 +1,4 @@
+* Description
+
+Auth.log_watcher watches your auth.log for changes and emails a
+notification when watched-for changes are noticed.
