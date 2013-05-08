@@ -38,6 +38,7 @@ needs. This is not designed to run as a chron job.
 
 import re, os, time
 
+# FIXME: the year is hard-coded!
 def get_time_stamp(string):
     return time.mktime(time.strptime(string[:15] + " 2013", '%b %d %H:%M:%S %Y'))
 
@@ -49,7 +50,7 @@ match_2 = re.compile(r"su\[.*\]: pam_unix\(su:session\)")
 auth_path = "/tmp/journ_out"
 
 # your email address
-email = "markscala@gmail.com"
+email = "YOUREMAIL@WHATEVER.COM"
 
 # you must create this file:
 os.system('touch /tmp/auth.date')
@@ -102,5 +103,3 @@ if __name__ == '__main__':
             except:
                 print "I'm broken."
                 break
-                
-
