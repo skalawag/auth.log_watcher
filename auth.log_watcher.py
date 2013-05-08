@@ -1,39 +1,6 @@
 #! /usr/bin/python
 
-"""You have to do some things to make this work:
-
-1. You need to install msmtp, create a config file for the root
-account, and chmod it to 600.  Here's an example:
-
----- Example msmtp for use with gmail -------
-defaults
-auth             on
-tls              on
-tls_trust_file   /usr/share/ca-certificates/mozilla/Thawte_Premium_Server_CA.crt
-
-#  gmail address
-account        gmail
-host           smtp.gmail.com
-port           587
-from           YOUREMAIL@gmail.com
-user           YOUREMAIL@gmail.com
-password       YOUR PASSWORD
-tls_trust_file /etc/ssl/certs/ca-certificates.crt
-
-# Set a default account
-account default : gmail
------ END EXAMLE --------------------------
-
-2. You may want to modify the regexes below.
-
-3. Since this was designed for Arch using systemd, you should modify
-auth_path below to point at your auth.log, probably /var/log/auth.log
-
-4. The main loop will sleep for 10 minutes. Change that to fit your
-needs. This is not designed to run as a chron job.
-
-5. Insert your own email address (or wherever you want the log info sent).
-
+""" auth.log_watcher.py:  Watch for logins and report by email.
 """
 
 import re, os, time
