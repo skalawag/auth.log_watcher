@@ -2,3 +2,39 @@
 
 Auth.log_watcher watches your auth.log for changes and emails a
 notification when watched-for changes are noticed.
+
+* Setup
+
+1. You need to install msmtp, create a config file for the root
+   account (it runs as root), and chmod it to 600.  Here's an example:
+
+#+BEGIN_EXAMPLE
+defaults
+auth             on
+tls              on
+tls_trust_file   /usr/share/ca-certificates/mozilla/Thawte_Premium_Server_CA.crt
+
+#  gmail address
+account        gmail
+host           smtp.gmail.com
+port           587
+from           YOUREMAIL@gmail.com
+user           YOUREMAIL@gmail.com
+password       YOUR PASSWORD
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+# Set a default account
+account default : gmail
+#+END_EXAMPLE
+
+2. You may want to modify the regexes below.
+
+3. Since this was designed for Arch Linux for systemd, you should
+   modify auth_path below to point at your auth.log, probably
+   /var/log/auth.log. Or just use Arch Linux.
+
+4. The main loop will sleep for 20 seconds. Change that to fit your
+   needs. This is not designed to run as a chron job.
+
+5. Insert your own email address (or the email address to which you
+   want the log info sent).
