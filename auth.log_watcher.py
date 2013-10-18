@@ -13,8 +13,11 @@ def get_time_stamp(string):
 match_1 = re.compile(r"sshd.*Accepted")
 match_2 = re.compile(r"su\[.*\]: pam_unix\(su:session\)")
 
-# modify this as needed (this is for Arch Linux):
+# target to write to.
 auth_path = "/tmp/journ_out"
+
+# command
+COMMAND = 'journalctl > %s' % auth_path
 
 # your email address
 email = "YOUREMAIL@WHATEVER.COM"
@@ -28,7 +31,7 @@ if __name__ == '__main__':
     # get going....
     while True:
         try:
-            os.system('journalctl > /tmp/journ_out')
+            os.system(COMMAND)
             f = open(auth_path)
 
             g = open(last_date, 'r')

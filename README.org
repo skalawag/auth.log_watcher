@@ -30,8 +30,7 @@ notification when watched-for changes are noticed.
 - You may want to modify the regexes below.
 
 - Since this was designed for Arch Linux for systemd, you should
-  modify auth_path below to point at your auth.log, probably
-  /var/log/auth.log. Or just use Arch Linux.
+  modify the variable COMMAND to fit your system.
 
 - The main loop will sleep for 20 seconds. Change that to fit your
   needs. This is not designed to run as a chron job.
